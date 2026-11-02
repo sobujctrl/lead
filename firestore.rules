@@ -1,0 +1,28 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper function to check if the user is the authorized admin
+    function isAdmin() {
+      return request.auth != null && 
+             (request.auth.token.email.lower() == 'sobujbd679@gmail.com' ||
+              request.auth.token.email.lower() == 'teammate1@gmail.com' ||
+              request.auth.token.email.lower() == 'teammate2@gmail.com');
+    }
+
+    // Leads collection: only authorized admin can read and write
+    match /leads/{leadId} {
+      allow read, write: if isAdmin();
+    }
+
+    // Team members & Settings collections
+    match /settings/{settingId} {
+      allow read, write: if isAdmin();
+    }
+
+    // Default deny all other paths
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

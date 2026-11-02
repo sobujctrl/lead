@@ -1,0 +1,6 @@
+{
+  "name": "ইউনিফাইড লিড ইনবক্স (Unified Lead Inbox)",
+  "description": "Facebook, Messenger এবং WhatsApp-এর সব লিড এক জায়গায় ম্যানেজ, ফিল্টার ও ট্র্যাক করার আধুনিক বাংলা সিআরএম ও ইনবক্স টুল।",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

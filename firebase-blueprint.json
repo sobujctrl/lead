@@ -1,0 +1,40 @@
+{
+  "entities": {
+    "Lead": {
+      "title": "Lead",
+      "description": "Represents an incoming unified lead from Facebook, Messenger, WhatsApp, or manual intake.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique identifier of the lead" },
+        "name": { "type": "string", "description": "Full name of the lead" },
+        "phone": { "type": "string", "description": "Phone number in BD normalized format" },
+        "source": { "type": "string", "description": "Primary lead source" },
+        "sources": { "type": "array", "description": "List of sources the lead has contacted through" },
+        "messengerId": { "type": "string", "description": "Facebook Messenger PSID" },
+        "message": { "type": "string", "description": "Lead message text" },
+        "lastMessage": { "type": "string", "description": "Latest incoming message" },
+        "lastMessageAt": { "type": "string", "description": "ISO timestamp of latest message" },
+        "status": { "type": "string", "description": "Lead pipeline status" },
+        "tags": { "type": "array", "description": "Lead categorization tags" },
+        "isStarred": { "type": "boolean", "description": "Starred or favorited status" },
+        "assignedTo": { "type": "string", "description": "Assigned team member" },
+        "followUpDate": { "type": "string", "description": "Scheduled follow up date" },
+        "notes": { "type": "array", "description": "Internal staff notes" },
+        "activities": { "type": "array", "description": "Audit trail and history of lead activities" },
+        "createdAt": { "type": "string", "description": "Lead creation timestamp" },
+        "pageId": { "type": "string", "description": "Facebook Page ID where interaction happened" },
+        "pageName": { "type": "string", "description": "Facebook Page name where interaction happened" },
+        "lastChannel": { "type": "string", "description": "Channel of latest interaction: comment or messenger" },
+        "lastPostId": { "type": "string", "description": "Facebook post ID" },
+        "lastPostLink": { "type": "string", "description": "Facebook post URL" }
+      },
+      "required": ["name", "source"]
+    }
+  },
+  "firestore": {
+    "/leads/{leadId}": {
+      "schema": "Lead",
+      "description": "Unified leads collection"
+    }
+  }
+}
